@@ -1,0 +1,51 @@
+{
+    "name": "dilemanator",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "runArgs": [
+        // "--rm",
+        "--name", "vsc-${localWorkspaceFolderBasename}",
+        "--env-file", ".env"
+    ],
+    "mounts": [
+        {
+            "source": "${localWorkspaceFolder}",
+            "target": "/code",
+            "type": "bind"
+        }
+    ],
+    "workspaceFolder": "/code",
+    "updateContentCommand": "uv sync ",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "~/.venv"
+            },
+            "extensions": [
+                // Development
+                "almenon.arepl",
+                // Environment
+                "Cardinal90.multi-cursor-case-preserve",
+                "ryu1kn.partial-diff",
+                "christian-kohler.path-intellisense",
+                "JannisX11.batch-rename-extension",
+                "njzy.stats-bar",
+                "tamasfe.even-better-toml",
+                // Utils
+                "humao.rest-client",
+                "mhutchie.git-graph",
+                // Style and formatting
+                "charliermarsh.ruff",
+                "DavidAnson.vscode-markdownlint",
+                "mohsen1.prettify-json",
+                "EditorConfig.EditorConfig",
+                "ms-python.isort",
+                // Language
+                "streetsidesoftware.code-spell-checker",
+                "streetsidesoftware.code-spell-checker-portuguese-brazilian"
+            ]
+        }
+    }
+}
